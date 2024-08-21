@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://0iyt7pqligad"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_esgw8"]
+[ext_resource type="ArrayMesh" uid="uid://wkhdci6bbo1t" path="res://Enemy/T-34.obj" id="2_dvpkh"]
+[ext_resource type="AudioStream" uid="uid://o05ojvi0thqw" path="res://Sounds/tank-moving-143104.mp3" id="3_jd71n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrd67"]
+albedo_color = Color(0.25098, 0.423529, 0.243137, 1)
+
+[node name="Enemy" type="PathFollow3D"]
+loop = false
+script = ExtResource("1_esgw8")
+speed = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lrd67")
+mesh = ExtResource("2_dvpkh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jd71n")
+volume_db = -80.0
+autoplay = true
